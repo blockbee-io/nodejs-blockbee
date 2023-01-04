@@ -6,6 +6,16 @@ class BlockBee {
     static #baseURL = 'https://api.blockbee.io'
 
     constructor(coin, ownAddress, callbackUrl, parameters = {}, bbParams = {}, apiKey) {
+        if (!apiKey) {
+            throw new Error('Missing API Key')
+        }
+
+        BlockBee.getSupportedCoins(apiKey).then(validCoins => {
+            if (!validCoins.hasOwnProperty(coin)) {
+                throw new Error('The cryptocurrency/token requested is not supported.')
+            }
+        })
+
         this.coin = coin
         this.ownAddress = ownAddress
         this.callbackUrl = callbackUrl
