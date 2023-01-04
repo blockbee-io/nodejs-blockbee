@@ -14,7 +14,7 @@ npm install @blockbee/api
 ### Importing in your project file
 
 ```js
-var BlockBee = require('@blockbee/nodejs-blockbee')
+var BlockBee = require('@blockbee/api')
 ```
 
 ### Generating a new Address
@@ -115,5 +115,5 @@ Contact us @ https://blockbee.io/contacts/
 #### 1.0.0
 * Initial Release
 
-#### 1.0.1
+#### 1.0.2
 * Version Bump
