@@ -1,7 +1,8 @@
 {
-  "name": "nodejs-blockbee",
+  "name": "@blockbee/nodejs-blockbee",
   "version": "1.0.0",
   "description": "BlockBee's Library for NodeJS",
+  "main": "index.js",
   "type": "commonjs",
   "author": "BlockBee <info@blockbee.io>",
   "license": "MIT",
@@ -11,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blockbee-io/nodejs-blockbee.git"
+    "url": "git+https://github.com/blockbee-io/nodejs-blockbee.git"
   },
   "keywords": [
     "crypto",
@@ -27,5 +28,8 @@
     "binance smart chain",
     "erc20",
     "bep20"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/blockbee-io/nodejs-blockbee/issues"
+  }
 }

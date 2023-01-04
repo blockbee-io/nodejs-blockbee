@@ -14,7 +14,7 @@ npm install nodejs-blockbee
 ### Importing in your project file
 
 ```js
-var BlockBee = require('nodejs-blockbee')
+var BlockBee = require('@blockbee/nodejs-blockbee')
 ```
 
 ### Generating a new Address
