@@ -22,7 +22,7 @@ var BlockBee = require('nodejs-blockbee')
 ```js
 const bb = new BlockBee(coin, myAddress, callbackUrl, params, blockbeeParams, apiKey)
 
-const address = bb.getAddress()
+const address = await bb.getAddress()
 ```
 
 Where:
@@ -44,7 +44,7 @@ Where:
 ```js
 const bb = new BlockBee(coin, myAddress, callbackUrl, params, blockbeeParams, apiKey)
 
-const data = bb.checkLogs()
+const data = await bb.checkLogs()
 ```
 > Same parameters as before, the ```data``` returned can b e checked here: https://docs.blockbee.io/#operation/logs
 
@@ -53,11 +53,11 @@ const data = bb.checkLogs()
 ```js
 const bb = new BlockBee(coin, myAddress, callbackUrl, params, blockbeeParams, apiKey)
     
-const address = bb.getAddress()
+const address = await bb.getAddress()
 
 // ...
 
-const qrCode = bb.getQrcode(value, size)
+const qrCode = await bb.getQrcode(value, size)
 ```
 For object creation, same parameters as before. You must first call ``getAddress` as this method requires the payment address to have been created.
 
@@ -72,7 +72,7 @@ For QR Code generation:
 ### Estimating transaction fees
 
 ```js
-const fees = BlockBee.getEstimate(coin, apiKey, addresses, priority)
+const fees = await BlockBee.getEstimate(coin, apiKey, addresses, priority)
 ```
 Where: 
 * ``coin`` is the coin you wish to check, from BlockBee's supported currencies (e.g 'btc', 'eth', 'erc20_usdt', ...)
@@ -85,7 +85,7 @@ Where:
 ### Converting between coins and fiat
 
 ```js
-const conversion = BlockBee.getConvert(coin, value, from, apiKey)
+const conversion = await BlockBee.getConvert(coin, value, from, apiKey)
 ```
 Where:
 * ``coin`` the target currency to convert to, from BlockBee's supported currencies (e.g 'btc', 'eth', 'erc20_usdt', ...)
@@ -97,7 +97,7 @@ Where:
 
 ### Getting supported coins
 ```js
-const supportedCoins = BlockBee.getSupportedCoins(apiKey)
+const supportedCoins = await BlockBee.getSupportedCoins(apiKey)
 ```
 Where:
 * ``apiKey`` is the API Key provided by BlockBee's [dashboard](https://dash.blockbee.io/).
