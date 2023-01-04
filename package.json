@@ -1,6 +1,6 @@
 {
   "name": "@blockbee/api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BlockBee's Library for NodeJS",
   "main": "index.js",
   "type": "commonjs",
