@@ -1,5 +1,5 @@
-import test from 'node:test'
-import { BlockBee } from "./index.js"
+const BlockBee = require('./index')
+const test = require('node:test')
 
 const apiKey = '' // <- Insert your API Key here to run tests.
 

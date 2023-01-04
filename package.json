@@ -2,7 +2,7 @@
   "name": "nodejs-blockbee",
   "version": "1.0.0",
   "description": "BlockBee's Library for NodeJS",
-  "main": "./index.js",
+  "type": "commonjs",
   "author": "BlockBee <info@blockbee.io>",
   "license": "MIT",
   "homepage": "https://blockbee.io/",

@@ -256,4 +256,4 @@ class BlockBee {
     }
 }
 
-export { BlockBee }
+module.exports = BlockBee
