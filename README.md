@@ -6,7 +6,7 @@ NodeJS's implementation of BlockBee's payment gateway
 ## Install
 
 ```console
-npm install nodejs-blockbee
+npm install @blockbee/api
 ```
 
 ## Usage

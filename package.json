@@ -1,5 +1,5 @@
 {
-  "name": "@blockbee/nodejs-blockbee",
+  "name": "@blockbee/api",
   "version": "1.0.0",
   "description": "BlockBee's Library for NodeJS",
   "main": "index.js",
