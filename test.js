@@ -10,7 +10,9 @@ test('Test requesting supported cryptocurrencies', async (t) => {
 })
 
 test('Test generating address', async (t) => {
-    const bb = new BlockBee('polygon_matic', '', 'https://webhook.site/19a994f1-54eb-47dc-8516-4107851f9a5f', {}, {
+    const bb = new BlockBee('polygon_matic', '', 'https://webhook.site/19a994f1-54eb-47dc-8516-4107851f9a5s', {
+        order_id: 1235,
+    }, {
         convert: 1,
         multi_chain: 1,
     }, apiKey)
@@ -21,7 +23,7 @@ test('Test generating address', async (t) => {
 })
 
 test('Test getting logs', async (t) => {
-    const bb = new BlockBee('polygon_matic', '', 'https://webhook.site/19a994f1-54eb-47dc-8516-4107851f9a5f', {}, {
+    const bb = new BlockBee('polygon_matic', '', 'https://webhook.site/19a994f1-54eb-47dc-8516-4107851f9a5s', {}, {
         convert: 1,
         multi_chain: 1,
     }, apiKey)

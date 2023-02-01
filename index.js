@@ -70,11 +70,11 @@ class BlockBee {
 
         let callbackUrl = new URL(this.callbackUrl)
         const parameters = this.parameters
-
-        if (parameters.length > 0) {
-            Object.keys(parameters).forEach(key => callbackUrl.searchParams.append(key, parameters[key]))
+    
+        if (Object.entries(parameters).length > 0) {
+            Object.entries(parameters).forEach(([k, v]) => callbackUrl.searchParams.append(k, v))
         }
-
+        
         const params = this.ownAddress
             ? {...this.bbParams, ...{
                     callback: encodeURI(callbackUrl.toString()),
@@ -111,9 +111,9 @@ class BlockBee {
 
         let callbackUrl = new URL(this.callbackUrl)
         const parameters = this.parameters
-
-        if (parameters.length > 0) {
-            Object.keys(parameters).forEach(key => callbackUrl.searchParams.append(key, parameters[key]))
+    
+        if (Object.entries(parameters).length > 0) {
+            Object.entries(parameters).forEach(([k, v]) => callbackUrl.searchParams.append(k, v))
         }
 
         callbackUrl = encodeURI(callbackUrl.toString())
@@ -245,7 +245,7 @@ class BlockBee {
      * @returns {Promise<any>}
      */
     static async #_request(coin, endpoint, params = {}) {
-        const url = coin !== null ? new URL(`${this.#baseURL}/${coin.replace('_', '/')}/${endpoint}`) : new URL(`${this.#baseURL}/${endpoint}`)
+        const url = coin ? new URL(`${this.#baseURL}/${coin.replace('_', '/')}/${endpoint}/`) : new URL(`${this.#baseURL}/${endpoint}/`)
 
         if (params) {
             Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))

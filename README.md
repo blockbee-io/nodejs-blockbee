@@ -117,3 +117,6 @@ Contact us @ https://blockbee.io/contacts/
 
 #### 1.0.2
 * Version Bump
+
+#### 1.0.3
+* Minor fixes
