@@ -120,3 +120,6 @@ Contact us @ https://blockbee.io/contacts/
 
 #### 1.0.3
 * Minor fixes
+
+#### 1.0.4
+* Minor fixes

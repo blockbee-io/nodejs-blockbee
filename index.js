@@ -251,13 +251,11 @@ class BlockBee {
             Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
         }
 
-        const headers = new Headers({
-            referer: this.#baseURL
-        })
-
         const fetchParams = {
             method: 'GET',
-            headers,
+            headers: {
+                referer: this.#baseURL
+            },
             credentials: 'include'
         }
 
