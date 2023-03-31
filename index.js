@@ -224,6 +224,10 @@ class BlockBee {
      * @returns {Promise<any|null>}
      */
     static async getConvert(coin, value, from, apiKey) {
+        if (!apiKey) {
+            throw new Error('API Key is Empty')
+        }
+        
         const response = await BlockBee.#_request(coin, 'convert', {
             value,
             from,
@@ -234,6 +238,24 @@ class BlockBee {
             return response
         }
 
+        return null
+    }
+    
+    static async createPayout(coin, address, value, apiKey) {
+        if (!apiKey) {
+            throw new Error('API Key is Empty')
+        }
+    
+        const response = await BlockBee.#_request(coin, 'payout', {
+            value,
+            address,
+            apikey: apiKey
+        })
+    
+        if (response.status === 'success') {
+            return response
+        }
+    
         return null
     }
 

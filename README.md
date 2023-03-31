@@ -104,11 +104,29 @@ Where:
 
 > Response is an array with all support coins.
 
+
+### Request Payout
+
+```js
+const createPayout =  await BlockBee.createPayout(coin, address, value, apiKey);
+```
+
+This function can be used by you to request payouts (withdrawals in your platform).
+
+Where:
+* ``coin`` The cryptocurrency you want to request the Payout in (e.g `btc`, `eth`, `erc20_usdt`, ...).
+
+* ``address`` Address where the Payout must be sent to.
+
+* ``value`` Amount to send to the ``address``.
+
+> The response will be only a ``success`` to confirm the Payout Request was successfully created. To fulfill it you will need to go to BlockBee Dashboard.
+
+
 ## Help
 
 Need help?  
 Contact us @ https://blockbee.io/contacts/
-
 
 ### Changelog
 
@@ -123,3 +141,7 @@ Contact us @ https://blockbee.io/contacts/
 
 #### 1.0.4
 * Minor fixes
+
+#### 1.1.0
+* Added Payouts
+* Minor bugfixes

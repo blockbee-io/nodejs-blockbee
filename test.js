@@ -63,3 +63,10 @@ test('Test getting getConvert', async (t) => {
 
     if (convert === null) throw new Error('fail')
 })
+
+test('Test creating Payout Request', async (t) => {
+    const payout = await BlockBee.createPayout('polygon_matic', '0xA6B78B56ee062185E405a1DDDD18cE8fcBC4395d',1, apiKey)
+    
+    if (payout === null) throw new Error('fail')
+})
+
