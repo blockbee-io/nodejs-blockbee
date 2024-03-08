@@ -145,3 +145,6 @@ Contact us @ https://blockbee.io/contacts/
 #### 1.1.0
 * Added Payouts
 * Minor bugfixes
+
+#### 1.1.1
+* Minor bugfixes

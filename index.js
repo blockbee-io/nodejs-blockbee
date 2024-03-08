@@ -246,7 +246,7 @@ class BlockBee {
             throw new Error('API Key is Empty')
         }
     
-        const response = await BlockBee.#_request(coin, 'payout', {
+        const response = await BlockBee.#_request(coin, 'payout/request/create', {
             value,
             address,
             apikey: apiKey

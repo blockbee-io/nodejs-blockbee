@@ -1,7 +1,7 @@
 const BlockBee = require('./index')
 const test = require('node:test')
 
-const apiKey = '' // <- Insert your API Key here to run tests.
+const apiKey = '1mzfJHkAf8beGdmGJMhpS9qrm6T9HTcN0foroAGLZQNWzjicMUhP2EgNSM5F1cFY' // <- Insert your API Key here to run tests.
 
 test('Test requesting supported cryptocurrencies', async (t) => {
     const _r = await BlockBee.getSupportedCoins(apiKey)
