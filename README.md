@@ -552,6 +552,9 @@ Contact us @ https://blockbee.io/contacts/
 * Support to BlockBee Checkout page
 * Various improvements
 
+#### 2.0.1
+* Minor fixes
+
 ### Breaking Changes
 
 #### 2.0.0

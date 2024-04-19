@@ -65,8 +65,7 @@ test('Test creating Payout Request', async (t) => {
 })
 
 test('Test fetching Payout list', async (t) => {
-    const payout = await BlockBee.listPayouts('polygon_matic', '', '', apiKey)
-
+    const payout = await BlockBee.listPayouts('bep20_usdt', '', 1, apiKey)
     if (payout === null) throw new Error('fail')
 })
 

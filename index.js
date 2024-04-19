@@ -280,7 +280,7 @@ class BlockBee {
         }
 
         if ( page ) {
-            params.page = page
+            params.p = page
         }
 
         let endpoint = 'payout/list'
