@@ -175,26 +175,14 @@ class BlockBee {
      * @param apiKey
      * @returns {Promise<any|null>}
      */
-    static async getInfo( coin = null, assoc = false, apiKey ) {
+    static async getInfo( coin = null, assoc = false, apiKey = '' ) {
         const params = {}
-
-        if ( !apiKey ) {
-            throw new Error('API Key is Empty')
-        }
-
-        params['apikey'] = apiKey
 
         if ( !coin ) {
             params['prices'] = 0
         }
 
-        const response = await this.#_request_get(coin, 'info', params)
-
-        if ( !coin || response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await this.#_request_get(coin, 'info', params)
     }
 
     /**
@@ -205,22 +193,11 @@ class BlockBee {
      * @param priority
      * @returns {Promise<any|null>}
      */
-    static async getEstimate( coin, apiKey, addresses = 1, priority = 'default' ) {
-        if ( !apiKey ) {
-            throw new Error('API Key is Empty')
-        }
-
-        const response = await BlockBee.#_request_get(coin, 'estimate', {
+    static async getEstimate( coin, apiKey = '', addresses = 1, priority = 'default' ) {
+        return await BlockBee.#_request_get(coin, 'estimate', {
             addresses,
-            priority,
-            apikey: apiKey
+            priority
         })
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
     }
 
     /**
@@ -231,22 +208,11 @@ class BlockBee {
      * @param apiKey
      * @returns {Promise<any|null>}
      */
-    static async getConvert( coin, value, from, apiKey ) {
-        if ( !apiKey ) {
-            throw new Error('API Key is Empty')
-        }
-
-        const response = await BlockBee.#_request_get(coin, 'convert', {
+    static async getConvert( coin, value, from, apiKey = '' ) {
+        return await BlockBee.#_request_get(coin, 'convert', {
             value,
-            from,
-            apikey: apiKey
+            from
         })
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
     }
 
     static async createPayout( coin, requests, apiKey, process = false ) {
@@ -264,12 +230,7 @@ class BlockBee {
             endpoint = endpoint + '/process'
         }
 
-        const response = await BlockBee.#_request_post(coin, endpoint, apiKey, body, true)
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await BlockBee.#_request_post(coin, endpoint, apiKey, body, true)
     }
 
     static async listPayouts( coin, status, page, apiKey, requests = false ) {
@@ -289,21 +250,11 @@ class BlockBee {
             endpoint = 'payout/request/list'
         }
 
-        const response = await this.#_request_get(coin, endpoint, {...params, apikey: apiKey})
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await this.#_request_get(coin, endpoint, {...params, apikey: apiKey})
     }
 
     static async getPayoutWallet( coin, apiKey, balance = false ) {
         let wallet = await this.#_request_get(coin, 'payout/address', {apikey: apiKey})
-
-        if ( wallet.status !== 'success' ) {
-            return null
-        }
 
         const output = {address: wallet.address}
 
@@ -322,13 +273,7 @@ class BlockBee {
             throw new Error('Please provide the Payout Request(s) ID(s)')
         }
 
-        const response = await this.#_request_post('', 'payout/create', apiKey, {request_ids: ids.join(',')})
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await this.#_request_post('', 'payout/create', apiKey, {request_ids: ids.join(',')})
     }
 
     static async processPayout( apiKey, id ) {
@@ -342,13 +287,7 @@ class BlockBee {
             throw new Error('Please provide the Payout ID')
         }
 
-        const response = await this.#_request_post('', 'payout/status', apiKey, {payout_id: id})
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await this.#_request_post('', 'payout/status', apiKey, {payout_id: id})
     }
 
     /**
@@ -356,11 +295,16 @@ class BlockBee {
      * @returns {Promise<*|null>}
      */
     static async paymentRequest( redirectUrl, notifyUrl, value, apiKey, params = {}, bbParams = {} ) {
-        if ( !notifyUrl || !redirectUrl || !value || !apiKey ) {
-            return null
+        if (!notifyUrl) {
+            throw new Error('notifyUrl is required')
+        }
+
+        if (!redirectUrl) {
+            throw new Error('paymentRequest is required')
         }
 
         redirectUrl = new URL(redirectUrl)
+
         notifyUrl = new URL(notifyUrl)
 
         if ( Object.entries(params).length > 0 ) {
@@ -377,12 +321,7 @@ class BlockBee {
             }
         }
 
-        const response = await BlockBee.#_request_get('', 'checkout/request', reqParams)
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await BlockBee.#_request_get('', 'checkout/request', reqParams)
     }
 
     /**
@@ -392,22 +331,12 @@ class BlockBee {
      * @returns {Promise<null|Object>}
      */
     static async paymentLogs( token, apiKey ) {
-        if ( !token ) {
-            throw new Error('Token is Empty')
-        }
-
         const params = {
             apikey: apiKey,
             token: token
         }
 
-        const response = await BlockBee.#_request_get('', 'checkout/logs', params)
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await BlockBee.#_request_get('', 'checkout/logs', params)
     }
 
     /**
@@ -415,8 +344,8 @@ class BlockBee {
      * @returns {Promise<*|null>}
      */
     static async depositRequest( notifyUrl, apiKey, parameters = {}, bbParams = {} ) {
-        if ( !notifyUrl || !apiKey ) {
-            return null
+        if ( !notifyUrl ) {
+            throw new Error('notifyUrl is required')
         }
 
         notifyUrl = new URL(notifyUrl)
@@ -432,13 +361,7 @@ class BlockBee {
             }
         }
 
-        const response = await BlockBee.#_request_get('', 'deposit/request', params)
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await BlockBee.#_request_get('', 'deposit/request', params)
     }
 
     /**
@@ -457,13 +380,7 @@ class BlockBee {
             token: token
         }
 
-        const response = await BlockBee.#_request_get('', 'deposit/logs', params)
-
-        if ( response.status === 'success' ) {
-            return response
-        }
-
-        return null
+        return await BlockBee.#_request_get('', 'deposit/logs', params)
     }
 
     /**
@@ -473,7 +390,7 @@ class BlockBee {
      * @param params
      * @returns {Promise<any>}
      */
-    static async #_request_get( coin, endpoint, params = {} ) {
+    static async #_request_get( coin = null, endpoint = '', params = {} ) {
         const url = coin ? new URL(`${this.#baseURL}/${coin.replace('_', '/')}/${endpoint}/`) : new URL(`${this.#baseURL}/${endpoint}/`)
 
         if ( params ) {
@@ -489,7 +406,14 @@ class BlockBee {
         }
 
         const response = await fetch(url, fetchParams)
-        return await response.json()
+
+        const response_obj = await response.json()
+
+        if ( response_obj.status === 'error' ) {
+            throw new Error(response_obj.error)
+        }
+
+        return response_obj
     }
 
     static async #_request_post( coin, endpoint, apiKey, body = {}, isJson = false ) {
@@ -522,7 +446,14 @@ class BlockBee {
         }
 
         const response = await fetch(url, fetchParams)
-        return await response.json()
+
+        const response_obj = await response.json()
+
+        if ( response_obj.status === 'error' ) {
+            throw new Error(response_obj.error)
+        }
+
+        return response_obj
     }
 }
 

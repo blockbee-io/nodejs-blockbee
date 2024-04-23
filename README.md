@@ -555,6 +555,10 @@ Contact us @ https://blockbee.io/contacts/
 #### 2.0.1
 * Minor fixes
 
+#### 2.1.0
+* Minor bugfixes
+* Improve error handling
+
 ### Breaking Changes
 
 #### 2.0.0

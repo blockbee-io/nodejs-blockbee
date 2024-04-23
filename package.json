@@ -1,6 +1,6 @@
 {
   "name": "@blockbee/api",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "BlockBee's Library for NodeJS",
   "main": "index.js",
   "type": "commonjs",
@@ -28,7 +28,10 @@
     "binance smart chain",
     "erc20",
     "bep20",
-    "avalanche-c"
+    "avalanche-c",
+    "base",
+    "optimism",
+    "arbitrum"
   ],
   "bugs": {
     "url": "https://github.com/blockbee-io/nodejs-blockbee/issues"
