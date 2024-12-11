@@ -1,6 +1,6 @@
 {
   "name": "@blockbee/api",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "BlockBee's Library for NodeJS",
   "main": "index.js",
   "type": "commonjs",
@@ -31,7 +31,8 @@
     "avalanche-c",
     "base",
     "optimism",
-    "arbitrum"
+    "arbitrum",
+    "solana"
   ],
   "bugs": {
     "url": "https://github.com/blockbee-io/nodejs-blockbee/issues"

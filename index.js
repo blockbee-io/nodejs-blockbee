@@ -10,6 +10,12 @@ class BlockBee {
             throw new Error('Missing API Key')
         }
 
+        if (!coin || !callbackUrl) {
+            throw new Error('Missing required parameters')
+        }
+
+        coin = coin.replace('/', '_')
+
         BlockBee.getSupportedCoins(apiKey).then(validCoins => {
             if ( !validCoins.hasOwnProperty(coin) ) {
                 throw new Error('The cryptocurrency/token requested is not supported.')
@@ -91,14 +97,10 @@ class BlockBee {
 
         const response = await BlockBee.#_request_get(this.coin, 'create', params)
 
-        if ( response.status === 'success' ) {
-            const addressIn = response.address_in
+        const addressIn = response.address_in
 
-            this.paymentAddress = addressIn
-            return addressIn
-        }
-
-        return null
+        this.paymentAddress = addressIn
+        return addressIn
     }
 
     /**

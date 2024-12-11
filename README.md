@@ -324,7 +324,7 @@ const logs = await BlockBee.depositLogs(token, apiKey);
 This function can be used by you to create [Payouts](https://docs.blockbee.io/#tag/Payouts).
 
 ```javascript
-const coin = 'polygon_matic'
+const coin = 'polygon_pol'
 
 const requests = {
     '0xA6B78B56ee062185E405a1DDDD18cE8fcBC4395d': 0.5,
@@ -396,7 +396,7 @@ const createPayout =  await BlockBee.listPayouts(coin, status, page, apiKey, req
       "total_with_fee": "0.606",
       "total_fiat": "",
       "fee": "0.006",
-      "coin": "polygon_matic",
+      "coin": "polygon_pol",
       "timestamp": "13/03/2024 17:48:39"
     }
   ],
@@ -514,7 +514,7 @@ const status = await BlockBee.checkPayoutStatus(apiKey, id)
     "total_with_fee": "0.606",
     "total_fiat": "",
     "fee": "0.006",
-    "coin": "polygon_matic",
+    "coin": "polygon_pol",
     "txid": "0xf9aa1618a7e460f8c68b6a02369b5058282c53a4ee23f967abef0d35203f328c",
     "timestamp": "13/03/2024 18:10:35"
   }
@@ -558,6 +558,9 @@ Contact us @ https://blockbee.io/contacts/
 #### 2.1.0
 * Minor bugfixes
 * Improve error handling
+
+#### 2.1.1
+* Minor improvements
 
 ### Breaking Changes
 
